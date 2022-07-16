@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import { AddProductToWishlistProps } from './AddProducToWishlist'
 import dynamic from 'next/dynamic';
+import lodash from 'lodash'
 
 const AddProductToWishlist = dynamic<AddProductToWishlistProps>(() => {
   return import ('./AddProducToWishlist').then(mod => mod.AddProductToWishlist)
@@ -21,13 +22,6 @@ interface ProductItemProps{
 export function ProductItemComponent({ product, onAddToWishlist }: ProductItemProps ) {
   const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
 
-  //exmplo de importação inline
-  // async function showFormattedDate() {
-  //   const { format } = await import('date-fns')
-
-  //   format()
-  // }
-
   return(
     <div>
       {product.title} - <strong>{product.priceFormatted}</strong>
@@ -44,5 +38,5 @@ export function ProductItemComponent({ product, onAddToWishlist }: ProductItemPr
 }
 
 export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => {
-  return Object.is(prevProps.product, nextProps.product)
+  return lodash.isEqual(prevProps.product, nextProps.product)
 })

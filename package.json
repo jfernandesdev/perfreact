@@ -10,12 +10,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^12.2.2",
+    "lodash": "^4.17.21",
     "next": "12.2.2",
+    "next-compose-plugins": "^2.2.1",
     "react": "^17",
     "react-dom": "^17",
     "react-virtualized": "^9.22.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/node": "^18.0.4",
     "@types/react": "^17",
     "@types/react-virtualized": "^9.21.21",
